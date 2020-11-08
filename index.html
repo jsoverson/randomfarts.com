@@ -77,7 +77,7 @@
   </head>
 
   <body>
-    <button id="pfft" class="btn off">Start</button>
+    <button id="💨" class="btn off">Start</button>
     <a
       href="https://github.com/jsoverson/randomfarts.com"
       class="github-corner"
@@ -135,7 +135,7 @@
         }
       }
     </style>
-    <div id="pfffblt">
+    <div id="📯">
       <audio src="the-talent/195798_lapacipi_fart1.mp3" preload="auto"></audio>
       <audio
         src="the-talent/241000_dsisstudios_short-fart-01.mp3"
@@ -238,29 +238,32 @@
       const minMillisBetweenHonkyTonkin = 5000;
       let on = false;
       let timerId = null;
-      let finger = document.getElementById("pfft");
-      finger.addEventListener("click" /*pull*/, () => {
+      let danger = document.getElementById("💨");
+      danger.addEventListener("click", () => {
         on = !on;
         if (!on) {
           console.log("*clench*");
           clearTimeout(timerId);
+          danger.innerHTML = "Start";
+          danger.classList.add("off");
         } else {
-          console.log("*unclench*");
+          console.log("*relax*");
+          danger.innerHTML = "Stop";
+          danger.classList.remove("off");
           popAFluffy();
         }
-        finger.innerHTML = on ? `Stop` : `Start`;
-        finger.classList.toggle("off", !on);
       });
-      const container = document.getElementById("pfffblt");
-      const toots = container.children;
+
+      const toots = document.getElementById("📯").children;
+
       function getTrouserTrumpet() {
-        console.log("Trouser trumpet gotten");
+        console.log("Trouser trumpet ready to play");
         return toots[Math.floor(Math.random() * toots.length)];
       }
       function popAFluffy() {
         if (!on) return;
-        const airBiscuit = getTrouserTrumpet();
         console.log("Fluffy about to be popped");
+        const airBiscuit = getTrouserTrumpet();
         airBiscuit.play();
         queueTooterMcSqueaks();
       }
@@ -273,7 +276,7 @@
         );
       }
       function queueTooterMcSqueaks() {
-        console.log("Tooter McSqueaks ready for takeoff");
+        console.log("Tooter McSqueaks queueing for takeoff");
         timerId = setTimeout(popAFluffy, randomFlatulationInterval());
       }
     </script>
