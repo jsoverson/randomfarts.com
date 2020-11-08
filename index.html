@@ -257,6 +257,7 @@
         return toots[Math.floor(Math.random() * toots.length)];
       }
       function popAFluffy() {
+        if (!on) return;
         const airBiscuit = getTrouserTrumpet();
         console.log("Fluffy about to be popped");
         airBiscuit.play();
