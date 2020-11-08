@@ -26,6 +26,10 @@ html, body {
   height: 50vmin;
 }
 
+.btn:focus {
+  outline:none;
+}
+
 .btn:hover {
   color: white;
   top: 1vmin;
