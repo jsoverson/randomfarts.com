@@ -23,11 +23,17 @@ function updateProgress(progress) {
   progressValue.style.strokeDashoffset = CIRCUMFERENCE * reduction;
 }
 
+const TUMMYSTATUS = {
+  SUPER_RUMBLY: 1,
+  NOT_BAD: 2,
+};
+
 class TootController {
   constructor(
     minTimeBetweenCropDusting = 5000,
     maxTimeTilBellyExplosion = 30000
   ) {
+    this.tummyStatus = TUMMYSTATUS.NOT_BAD;
     this.tummyRumblinStartTime = Date.now();
     this.lastTootTime = 0;
     this.justTheWayItIs = maxTimeTilBellyExplosion;
@@ -40,10 +46,12 @@ class TootController {
 
   settleStomach() {
     console.log("much better");
+    this.tummyStatus = TUMMYSTATUS.NOT_BAD;
     this.howLongICanHoldIt = Number.POSITIVE_INFINITY;
   }
 
   surpriseFart() {
+    this.tummyStatus = TUMMYSTATUS.SUPER_RUMBLY;
     this.popAFluffy();
     console.log("oops!");
   }
@@ -90,7 +98,8 @@ class TootController {
     airBiscuit.addEventListener("ended", () => {
       this.lastTootTime = Date.now();
       console.log("Tooter McSqueaks queueing for takeoff");
-      this.howLongICanHoldIt = this.calculateFlatulenceInterval();
+      if (this.tummyStatus === TUMMYSTATUS.SUPER_RUMBLY)
+        this.howLongICanHoldIt = this.calculateFlatulenceInterval();
     });
   }
 }
